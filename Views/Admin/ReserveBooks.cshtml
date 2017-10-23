@@ -1,0 +1,28 @@
+﻿@model IEnumerable<BOOKRESERVATION.Models.Book>
+
+<form method="get" action="@Url.Action("ReserveBooks", "Admin")">
+    <label>Search Data</label>
+    <input type="text" name="search" />
+    <button type="submit">Search</button>
+</form>
+
+<br/>                                       
+    
+@foreach (var item in Model)
+{
+    
+    @Html.DisplayFor(asdf => item.ID);
+    <text>&nbsp;</text>
+    @Html.DisplayFor(asdf => item.BookTitle);
+    <text>&nbsp;</text>
+    @Html.DisplayFor(asdf => item.Author);
+    <text>&nbsp;</text>
+    @Html.TextBox("Qty", null, new { style = "width:50px" })  
+    <text>&nbsp;</text>
+    <br />
+
+}
+
+
+<br />
+<br />

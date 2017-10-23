@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="MyDatabaseModelStoreContainer">
+    <EntitySet Name="AccountTable" EntityType="MyDatabaseModel.Store.AccountTable" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BookReservation" EntityType="MyDatabaseModel.Store.BookReservation" store:Type="Tables" store:Schema="dbo" store:Name="BookReservation">
+      <DefiningQuery>SELECT 
+      [BookReservation].[BookID] AS [BookID], 
+      [BookReservation].[BookTitle] AS [BookTitle], 
+      [BookReservation].[Qty] AS [Qty]
+      FROM [dbo].[BookReservation] AS [BookReservation]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="BookTable" EntityType="MyDatabaseModel.Store.BookTable" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="AccountTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Age" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'C:\USERS\USER\DESKTOP\BOOKRESERVATION\BOOKRESERVATION\APP_DATA\MYDATABASE.MDF.dbo.BookReservation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="BookReservation">
+    <Key>
+      <PropertyRef Name="BookID" />
+      <PropertyRef Name="Qty" />
+    </Key>
+    <Property Name="BookID" Type="int" Nullable="false" />
+    <Property Name="BookTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="Qty" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookTable">
+    <Key>
+      <PropertyRef Name="BookID" />
+    </Key>
+    <Property Name="BookID" Type="int" Nullable="false" />
+    <Property Name="BookTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookAuthor" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+</Schema>

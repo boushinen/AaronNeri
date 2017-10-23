@@ -1,0 +1,22 @@
+﻿@model BOOKRESERVATION.Models.Account
+
+@using (Html.BeginForm("Index", "Home"))
+{
+    <form method="get" action="@Url.Action("Index", "Home")">
+    <label>Username: </label>
+    <input type="text" name="username" />
+    <br />
+    <label>Password: </label>
+    <input type="password" name="password" />
+
+   
+    <button type="submit">Login</button>
+    <br />
+    @ViewBag.Error
+   
+   
+</form>
+    @Html.ActionLink("Register", "Add","Admin")
+    
+}
+
